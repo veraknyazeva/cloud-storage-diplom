@@ -1,0 +1,26 @@
+spring:
+  datasource:
+    username:
+    url:
+    type: org.springframework.jdbc.datasource.DriverManagerDataSource
+    hikari:
+      schema: public
+    password:
+  application:
+    name: cloud-storage-diploma-test
+  liquibase:
+    enabled: true
+  jpa:
+    properties:
+      hibernate:
+        default_schema: public
+    hibernate:
+      ddl-auto: none
+server:
+  port: 8081
+
+service:
+  const:
+    jwt-expiration-ms: 600000
+  props:
+    required-header-name: auth-token

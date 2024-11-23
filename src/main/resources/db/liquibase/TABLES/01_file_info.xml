@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="20241116-1" author="Knyazeva_VA" context="Netology">
+        <createTable tableName="file_info"
+                     remarks="Таблица для хранения файлов">
+            <column name="id" autoIncrement="true" type="bigint" remarks="Уникальный идентификатор записи в таблице">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="id"/>
+            </column>
+            <column name="name" type="text" remarks="Имя файла">
+                <constraints unique="true" nullable="false"/>
+            </column>
+            <column name="size" type="bigint" remarks="Размер файла в байтах"/>
+            <column name="hash" type="text" remarks="Контрольная сумма"/>
+            <column name="file_content" type="bytea" remarks="Файл"/>
+        </createTable>
+    </changeSet>
+
+</databaseChangeLog>

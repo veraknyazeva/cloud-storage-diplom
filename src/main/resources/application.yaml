@@ -1,0 +1,31 @@
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    use-root-path: true
+spring:
+  datasource:
+    username: veraknazeva
+    url: jdbc:postgresql://localhost:5432/postgres
+    type: org.springframework.jdbc.datasource.DriverManagerDataSource
+    hikari:
+      schema: cloud_storage
+    password: ${DB_PASS:dera21011994}
+  application:
+    name: cloud-storage-diploma
+  liquibase:
+    enabled: false
+  jpa:
+    properties:
+      hibernate:
+        default_schema: cloud_storage
+    hibernate:
+      ddl-auto: validate
+server:
+  port: 8081
+
+service:
+  const:
+    jwt-expiration-ms: 600000 #10 min
+  props:
+    required-header-name: auth-token

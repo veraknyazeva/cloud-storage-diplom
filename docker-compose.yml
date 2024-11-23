@@ -1,0 +1,18 @@
+version: "3.7"
+
+services:
+  backend:
+    image: cloud-storage-diplom
+    build: .
+    container_name: cloud-storage
+    depends_on:
+      - db
+    ports:
+      - "8081:8081"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=diploma
+      - SPRING_DATASOURCE_PASSWORD=diploma
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=validate
+    volumes:
+      - ./logs:/logs
