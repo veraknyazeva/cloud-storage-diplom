@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import ru.netology.cloudstoragediplom.dto.file.FileDto;
@@ -55,7 +58,9 @@ public class FileServiceTest {
         fileInfos.add(info2);
         fileInfos.add(info3);
 
-        when(fileRepository.findAllWithLimit(LIMIT)).thenReturn(fileInfos);
+        Page<FileInfo> fileInfoPage = new PageImpl<>(fileInfos);
+
+        when(fileRepository.findAll(Pageable.ofSize(LIMIT))).thenReturn(fileInfoPage);
 
         List<FileItemDto> fileItemDtos = fileService.getList(LIMIT);
 

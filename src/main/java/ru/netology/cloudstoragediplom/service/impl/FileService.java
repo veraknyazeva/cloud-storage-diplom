@@ -1,6 +1,8 @@
 package ru.netology.cloudstoragediplom.service.impl;
 
 import jakarta.transaction.Transactional;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import ru.netology.cloudstoragediplom.dto.file.FileDto;
 import ru.netology.cloudstoragediplom.dto.file.FileItemDto;
@@ -63,8 +65,8 @@ public class FileService {
 
     public List<FileItemDto> getList(Integer limit) {
         List<FileItemDto> fileItemDto = new ArrayList<>();
-
-        List<FileInfo> fileInfoList = repository.findAllWithLimit(limit);
+        Page<FileInfo> pageLimit = repository.findAll(Pageable.ofSize(limit));
+        List<FileInfo> fileInfoList = pageLimit.toList();
         if (!fileInfoList.isEmpty()) {
             for (FileInfo fileInfo : fileInfoList) {
                 FileItemDto dto = new FileItemDto();

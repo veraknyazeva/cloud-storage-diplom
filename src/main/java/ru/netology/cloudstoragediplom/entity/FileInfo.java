@@ -7,7 +7,7 @@ import org.hibernate.proxy.HibernateProxy;
 import java.util.Objects;
 
 @Entity
-@Table(name = "file_info"/*, schema = "cloud_storage", catalog = "postgres"*/)
+@Table(name = "file_info")
 @Getter
 @Setter
 @ToString

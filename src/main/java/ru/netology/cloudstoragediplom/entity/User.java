@@ -6,7 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "users"/*, schema = "cloud_storage", catalog = "postgres"*/)
+@Table(name = "users")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
