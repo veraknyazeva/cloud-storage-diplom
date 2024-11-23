@@ -15,6 +15,6 @@ public interface FileRepository extends JpaRepository<FileInfo, Long> {
 
     Optional<FileInfo> findByName(String fileName); //если не найдено, чтобы не возвращать null возвращаем пустой Optional
 
-    @Query(nativeQuery = true, value = "SELECT * FROM cloud_storage.file_info LIMIT :size")
+    @Query(nativeQuery = true, value = "SELECT * FROM file_info LIMIT :size")
     List<FileInfo> findAllWithLimit(@Param("size") Integer limit);
 }

@@ -10,7 +10,7 @@ spring:
     type: org.springframework.jdbc.datasource.DriverManagerDataSource
     hikari:
       schema: cloud_storage
-    password: ${DB_PASS:dera21011994}
+    password: ${DB_PASS:}
   application:
     name: cloud-storage-diploma
   liquibase:
